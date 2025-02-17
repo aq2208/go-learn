@@ -89,16 +89,69 @@ func main() {
 	fmt.Println("=====Operators=====")
 	fmt.Println()
 
-	// control structures
-	fmt.Println("=====Control structures=====")
-	fmt.Println()
-
 	// loops
 	fmt.Println("=====Loops=====")
+	// basic for loop
+	for i := 0; i <= 5; i++ {
+		fmt.Println("Iteration: ", i)
+	}
+
+	// the init and post statements are optional
+	// for loop with single condition (like while loop)
+	sum := 1
+	for sum < 5 {
+		sum += sum
+	}
+	fmt.Println(sum)
+
 	fmt.Println()
 
-	// error handling
-	fmt.Println("=====Error handling=====")
+	// control structures
+	fmt.Println("=====Control structures=====")
+
+	// if else
+	x = 10
+	if x > 5 {
+		fmt.Println("x is greater than 5")
+	} else {
+		fmt.Println("x is less than or equal to 5")
+	}
+
+	// if with a short statement
+	if y := 10; y > 5 {
+		fmt.Println("y is greater than 5")
+	}
+
+	// switch case
+	switch day := "Monday"; day {
+	case "Monday":
+		fmt.Println("Start of the week")
+	case "Friday":
+		fmt.Println("Weekend is near")
+	default:
+		fmt.Println("Regular day")
+	}
+
+	// switch without a condition
+	// switch without a condition is the same as switch true
+	// cases can be non-constants
+	today := "Monday"
+	switch {
+	case today == "Monday":
+		fmt.Println("Start of the week")
+	case today == "Friday":
+		fmt.Println("Weekend is near")
+	default:
+		fmt.Println("Regular day")
+	}
+
+	// defer
+	// A defer statement defers the execution of a function until the surrounding function returns
+	defer fmt.Println("Defer - Last thing to print")
+	fmt.Println("Before panic")
+	panic("Something went wrong")
+	fmt.Println("After panic")
+
 	fmt.Println()
 }
 
