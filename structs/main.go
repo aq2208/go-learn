@@ -23,6 +23,31 @@ type school struct {
 	persons    []person // struct inside a struct
 }
 
+// A struct can also contain a field that is another struct (Embedded struct)
+type InternaltionalSchool struct {
+	school
+	Languages []string
+}
+
+// Constructor function
+// A constructor function is a function that returns a new instance of a struct.
+func newPerson(firstName string, lastName string, age int) person {
+	return person{
+		firstName: firstName,
+		lastName:  lastName,
+		age:       age,
+	}
+}
+
+// Constructor function with pointer
+func newPersonPointer(firstName string, lastName string, age int) *person {
+	return &person{
+		firstName: firstName,
+		lastName:  lastName,
+		age:       age,
+	}
+}
+
 func main() {
 	fmt.Println("Structs in Go")
 
@@ -48,6 +73,16 @@ func main() {
 		persons:    []person{person1, person2, person3},
 	}
 
+	internationalSchool1 := InternaltionalSchool { 
+		school: school {
+			name:       "FPT International School",
+			address:    "Hoa Lac, Hanoi",
+			tuitionFee: 50000000,
+			persons:    []person{person1, person2, person3},
+		},
+		Languages: []string{"English", "French", "Japanese"},
+	}
+
 	// Accessing the fields of a struct
 	// The fields of a struct value are accessed using a dot (.) followed by the field name.
 	fmt.Println("Person1 First Name: ", person1.firstName)
@@ -66,6 +101,12 @@ func main() {
 	fmt.Println("School Address: ", school1.address)
 	fmt.Println("School Tuition Fee: ", school1.tuitionFee)
 	fmt.Println("School Persons: ", school1.persons)
+
+	fmt.Println("International School Name: ", internationalSchool1.name)
+	fmt.Println("International School Address: ", internationalSchool1.address)
+	fmt.Println("International School Tuition Fee: ", internationalSchool1.tuitionFee)
+	fmt.Println("International School Persons: ", internationalSchool1.persons)
+	fmt.Println("International School Languages: ", internationalSchool1.Languages)
 
 	// Modifying the fields of a struct
 	person1.age = 40
