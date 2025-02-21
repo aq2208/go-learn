@@ -56,6 +56,7 @@ func main() {
 	fmt.Println("Slice t after append element 4: ", t)
 	t = append(t, 5, 6)
 	fmt.Println("Slice t after append elements 5 and 6: ", t)
+	t = append(t, u...)  // Append two slices together
 
 	// Copying a slice
 	// The built-in copy function copies elements from a source slice into a destination slice.
@@ -72,4 +73,27 @@ func main() {
 	for i, v := range t {
 		fmt.Printf("Index: %d, Value: %d\n", i, v)
 	}
+
+	// Slice of slices
+	matrix := [][]string{
+		{"A", "_", "_"},
+		{"_", "B", "_"},
+		{"_", "_", "C"},
+	}
+	fmt.Println(matrix)
+
+	for _, value := range matrix {
+		fmt.Println("Matrix value:", value)
+	}
+	for index := range matrix {
+		fmt.Println("Index in matrix: ", index)
+	}
+
+	// Slice resizing
+	slice1 := []int{1,2,3}
+	fmt.Printf("Slice1: %d with length: %d with capacity: %d\n", slice1, len(slice1), cap(slice1))
+	slice1 = append(slice1, 4)
+	fmt.Printf("Slice1: %d with length: %d with capacity: %d\n", slice1, len(slice1), cap(slice1))
+	slice1 = append(slice1, 5,6,7,8,9)
+	fmt.Printf("Slice1: %d with length: %d with capacity: %d\n", slice1, len(slice1), cap(slice1))
 }
